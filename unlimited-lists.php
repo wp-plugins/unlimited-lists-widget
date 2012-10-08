@@ -3,7 +3,7 @@
  * Plugin Name: Unlimited Lists Widget
  * Plugin URI: http://austinpassy.com/wordpress-plugins/unlimited-lists-widget
  * Description: Add unlimited lists to your sidebars!
- * Version: 0.1.0
+ * Version: 0.1.1
  * Author: Austin Passy
  * Author URI: http://austinpassy.com
  *
@@ -114,29 +114,58 @@ if ( !class_exists( 'unlimited_lists_widget' ) ) {
 			return $instance;
 		}
 		
+		/**
+		 * jQuery that handles the cloneing of each setting field.
+		 *
+		 * @ref http://www.johngadbois.com/adding-your-own-callbacks-to-wordpress-ajax-requests/
+		 */
 		function jquery() {
 			global $pagenow;
 			
 			if ( 'widgets.php' == $pagenow ) { ?>
             
 			<script type="text/javascript">
-            jQuery(document).ready(function($) {
-                $('a.add-item').on('click',function(e) {
-					var $this = $(this).parent().parent().parent();
-					var clone = $($this.find('div.item-wrapper'));
+			function unlimitedlists() {
+				jQuery('a.add-item').on('click',function(e) {
+					var $this = jQuery(this).parent().parent().parent();
+					var clone = jQuery($this.find('div.item-wrapper'));
+					var value = $this.find('p.list-item:last label span').text();
+					var newValue = parseInt(value) + 1;
+
 					//console.log( clone );
-                    $this.find('p.list-item:last').clone().appendTo( clone );
-                    $this.find('p.list-item:last input[type="text"]').val('');
-                    e.preventDefault();
-                });
-                $('.unlimited-lists-widget-controls p.list-item').each(function() {
-                    var $item = $(this);
-                    $(this).children('a.delete-item').on('click',function(e) {
-                        $item.remove();
-                        e.preventDefault;
-                    });			
-                });
+					$this.find('p.list-item:last').clone().appendTo( clone );
+					$this.find('p.list-item:last input[type="text"]').val('');
+					$this.find('p.list-item:last label span').text(newValue);
+					unlimitedlistsclone();
+					e.preventDefault();
+					return false;
+				});
+			}
+			function unlimitedlistsclone() {
+				jQuery('.unlimited-lists-widget-controls p.list-item').each(function() {
+					var $item = jQuery(this);
+					jQuery(this).children('a.delete-item').on('click',function(e) {
+						$item.remove();
+						e.preventDefault;
+						return false;
+					});			
+				});
+			}
+				
+            jQuery(document).ready(function($) {
+				unlimitedlists();
+				unlimitedlistsclone();
             });
+			
+			jQuery(document).ajaxSuccess(function(e, xhr, settings) {
+				var widget_id_base = '<?php echo "{$this->prefix}-unlimitedlists"; ?>';
+				
+				//console.log( settings );
+				if ( settings.data.search('action=save-widget') != -1 && settings.data.search('id_base=' + widget_id_base) != -1 ) {
+					unlimitedlists();
+					unlimitedlistsclone();
+				}
+			});
             </script>
             <?php }
 		}
@@ -198,7 +227,7 @@ if ( !class_exists( 'unlimited_lists_widget' ) ) {
 				<?php foreach ( $lists as $key => $item ) : ?>
                 
                 <p class="list-item">
-                	<label for="<?php echo $this->get_field_id( 'list' ); ?>"><?php printf( __( 'Item %d:', $this->textdomain ), $key + 1 ); ?></label><br />
+                	<label for="<?php echo $this->get_field_id( 'list' ); ?>"><?php printf( __( 'Item <span>%d</span>:', $this->textdomain ), $key + 1 ); ?></label><br />
                     <input type="text" class="widefat" id="<?php echo $this->get_field_id( 'list' ); ?>" name="<?php echo $this->get_field_name( 'list' ); ?>[]" value="<?php echo esc_attr( $item ); ?>" style="width:94%" />
                     <a class="delete-item button-secondary" href="#" onclick="return false;" title="&times;">&times;</a>
                 </p>

@@ -10,7 +10,9 @@ A widget to show list elements.
 
 == Description ==
 
-Activate the plugin then add it to any available sidebar in **Appearance&rarr;Widgets**.. 
+This plugin is a Widget Only. Activate the plugin then add it to any available sidebar in **Appearance&rarr;Widgets**.
+
+This widget allows you to add `ul` or `ol` lists with unlimited `li` elements.
 
 For question please visit my blog @ [http://austinpassy.com](http://austinpassy.com/wordpress-plugins/unlimited-lists-widget/)
 
@@ -30,6 +32,11 @@ Follow the steps below to install the plugin.
 
 == Changelog ==
 
+= Version 0.1.1 (10/08/12) =
+
+* Fixed AJAX bug: will add/remove items after widget save.
+* jQuery cleanup.
+
 = Version 0.1 (10/02/12) =
 
 * Initial release.
@@ -38,4 +45,4 @@ Follow the steps below to install the plugin.
 
 = 0.1.1 =
 
-* Added link love option and `widget-only` tag.
+* Fixed AJAX save bug.
