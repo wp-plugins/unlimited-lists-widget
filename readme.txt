@@ -3,7 +3,7 @@ Contributors: austyfrosty
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=E4PREW7W59L8Q
 Tags: widget-only, ul, li, unlimited lists, widget
 Requires at least: 3.3
-Tested up to: 3.5
+Tested up to: 3.9
 Stable tag: trunk
 
 A widget to show list elements.
