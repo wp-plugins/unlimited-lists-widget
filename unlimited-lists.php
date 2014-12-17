@@ -62,7 +62,7 @@ if ( !class_exists( 'unlimited_lists_widget' ) ) {
 			
 			$hide = ( !isset( $instance['show'] ) ) ? '' : ' style="display:none;"';
 			
-			$link_love = ( $args['love'] ) ? sprintf( __( '<p%s><a href="%s">Unlimited Lists</a> widget built by <a href="%s">Frosty</a>.</p>', $this->textdomain ), $hide, 'http://frosty.me/unlimited-lists/', 'http://austinpassy.com/wordpress-plugins/unlimited-lists-widget/' ) : null;
+			$link_love = ( $args['love'] ) ? sprintf( __( '<p%s><a href="%s">Unlimited Lists</a> widget built by <a href="%s">Frosty</a>.</p>', $this->textdomain ), $hide, 'http://frosty.me/unlimited-lists/', 'http://austin.passy.co/wordpress-plugins/unlimited-lists-widget/' ) : null;
 			
 			echo $before_widget;
 	
@@ -152,10 +152,10 @@ if ( !class_exists( 'unlimited_lists_widget' ) ) {
 				});
 			}
 				
-            jQuery(document).ready(function($) {
+			jQuery(document).ready(function($) {
 				unlimitedlists();
 				unlimitedlistsclone();
-            });
+			});
 			
 			jQuery(document).ajaxSuccess(function(e, xhr, settings) {
 				var widget_id_base = '<?php echo "{$this->prefix}-unlimitedlists"; ?>';
@@ -166,8 +166,8 @@ if ( !class_exists( 'unlimited_lists_widget' ) ) {
 					unlimitedlistsclone();
 				}
 			});
-            </script>
-            <?php }
+			</script>
+			<?php }
 		}
 	
 		/**
@@ -271,5 +271,3 @@ if ( !class_exists( 'unlimited_lists_widget' ) ) {
 	}
 	
 };
-
-?>
