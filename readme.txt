@@ -3,7 +3,7 @@ Contributors: austyfrosty
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=E4PREW7W59L8Q
 Tags: widget-only, ul, li, unlimited lists, widget
 Requires at least: 3.3
-Tested up to: 4.2
+Tested up to: 4.3
 Stable tag: trunk
 
 A widget to show HTML list elements.
@@ -12,7 +12,7 @@ A widget to show HTML list elements.
 
 Activate the plugin then add it to any available sidebar in **Appearance&rarr;Widgets**.. 
 
-For question please visit my blog @ [http://austin.passy.co](http://austinpassy.com/wordpress-plugins/unlimited-lists-widget/)
+For question please visit my blog @ [http://austin.passy.co](http://austin.passy.co/wordpress-plugins/unlimited-lists-widget/)
 
 And thanks for rating it! -->
 
@@ -31,6 +31,11 @@ Follow the steps below to install the plugin.
 1. Widget output.
 
 == Changelog ==
+
+= Version 0.1.2 (08/07/15) =
+
+* Ready for WordPress 4.3
+* Removed deprecated PHP4 constructor.
 
 = Version 0.1 (10/02/12) =
 

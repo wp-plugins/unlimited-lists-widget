@@ -1,15 +1,15 @@
 <?php
 /**
  * Plugin Name: Unlimited Lists Widget
- * Plugin URI: http://austinpassy.com/wordpress-plugins/unlimited-lists-widget
+ * Plugin URI: http://austin.passy.co/wordpress-plugins/unlimited-lists-widget
  * Description: Add unlimited lists to your sidebars!
- * Version: 0.1.1
+ * Version: 0.1.2
  * Author: Austin Passy
- * Author URI: http://austinpassy.com
+ * Author URI: http://austin.passy.co
  *
- * @copyright 2012
+ * @copyright 2012 - 2015
  * @author Austin Passy
- * @link http://frostywebdesigns.com/
+ * @link http://frosty.media/
  * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  *
  * This program is distributed in the hope that it will be useful,
@@ -35,13 +35,13 @@ if ( !class_exists( 'unlimited_lists_widget' ) ) {
 		/**
 		 * Set up the widget's unique name, ID, class, description, and other options.
 		 */
-		function unlimited_lists_widget() {
+		function __construct() {
 			$this->prefix = 'unlimited-lists-widget';
 			$this->textdomain = 'unlimited-lists';
 	
 			$widget_ops = array( 'classname' => 'unlimitedlists', 'description' => __( 'An advanced widget for unlimted listed items.', $this->textdomain ) );
 			$control_ops = array( 'width' => 525, 'height' => 350, 'id_base' => "{$this->prefix}-unlimitedlists" );
-			$this->WP_Widget( "{$this->prefix}-unlimitedlists", __( 'Unlimited Lists', $this->textdomain ), $widget_ops, $control_ops );
+            parent::__construct( "{$this->prefix}-unlimitedlists", __( 'Unlimited Lists', $this->textdomain ), $widget_ops, $control_ops );
 			
 			add_action( 'admin_head', array( $this, 'jquery' ), 99 );
 		}
